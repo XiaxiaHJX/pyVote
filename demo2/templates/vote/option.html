@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择</title>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="/static/css/main.css" rel="stylesheet">
+
+<div class="first_styles" style="margin:0 auto;width: 700px">
+    <a><h2>选择</h2></a>
+    <br>
+    <a><h3>{{ option1 }}</h3></a>
+    {% for option_1 in option1.voteoption_1_set.all %}
+    <form method="post" action="{% url 'vote:option' option_1.head.id %}">
+
+        {{ option_1 }}
+        <input type="radio"  name="optionname" value="{{ option_1.optionname }}"  checked>{{ option_1.first.optionname }}
+        <br>
+        {% endfor %}
+        <br><input type="submit" value="投票">
+    </form>
+        <br><br><a  href="{% url 'vote:index' %}"  style="font-size: 30px" >返回首页</a>
+</div>
+</body>
+</html>
