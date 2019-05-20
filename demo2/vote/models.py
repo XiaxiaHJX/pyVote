@@ -16,4 +16,11 @@ class VoteOption_1(models.Model):
     def __str__(self):
         return self.optionname
 
+#定义用户表
+class VoteUser(models.Model):
+    name=models.CharField(max_length=30)
+    pwd=models.IntegerField()
+
+    def __str__(self):
+        return self.name
 
