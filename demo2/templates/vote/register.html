@@ -10,14 +10,16 @@
 
     <div class="first_styles" style="margin:0 auto;width: 700px">
     <a><h2>注册</h2></a>
-    <br>
+        {{ register }}
+    <br><br>
         <form method="post" action="#" >
             name:<input type="text" name="name"><br><br>
             pwd:<input type="password" name="pwd"><br><br>
             <input type="submit" value="注册">
         </form>
         <br><br>
-        {{ register }}
+        <br><br><a href="{% url 'vote:login' %}">登录</a>
+
     </div>
 
 </body>

@@ -21,7 +21,7 @@ def register(request):
             return render(request, 'vote/register.html',{'register':'改账号已注册'})
         else:
             user.save()
-            return HttpResponseRedirect('/vote/index/')
+            return HttpResponseRedirect('/vote/login/')
 
 def login(request):
     if request.method == 'GET':
