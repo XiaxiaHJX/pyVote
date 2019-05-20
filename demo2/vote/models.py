@@ -11,7 +11,7 @@ class VoteHeadline(models.Model):
 #定义选项
 class VoteOption_1(models.Model):
     optionname=models.CharField(max_length=50,verbose_name='选项名字')
-    num=models.BigIntegerField(max_length=11,verbose_name='总数')
+    num=models.IntegerField(default=0,verbose_name='总数')
     head=models.ForeignKey(VoteHeadline,on_delete=models.CASCADE,verbose_name='标题')
     def __str__(self):
         return self.optionname

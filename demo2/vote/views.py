@@ -13,8 +13,9 @@ def option(request,id):
     if request.method=='GET':
         return render(request, 'vote/option.html', {'option1': option1})
     elif request.method=='POST':
-        optionname=request.POST['optionname']
-        opt=VoteOption_1.objects.get(optionname=optionname)
+        oid=request.POST['oid']
+        opt=VoteOption_1.objects.get(pk=oid)
+        print(opt)
         opt.num+=1
         opt.save()
         return HttpResponseRedirect('/vote/result/%s/' % str(opt.head.id,))
