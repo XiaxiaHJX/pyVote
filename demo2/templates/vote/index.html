@@ -14,7 +14,7 @@
 
 <div class="first_styles" style="margin:0 auto;width: 700px">
     <h1 >首页</h1>
-    当前用户：{{ username }}<a href="{% url 'vote:login' %}">  登出</a>
+    当前用户：{{ request.user }}<a href="{% url 'vote:login' %}">  登出</a>
     <ul>
         {% for titles in titlelist %}
         <li>
@@ -24,7 +24,6 @@
             没有投票信息
         {% endfor %}
     </ul>
-    <a href="{% url 'vote:register' %}">注册</a>
 
 </div>
 

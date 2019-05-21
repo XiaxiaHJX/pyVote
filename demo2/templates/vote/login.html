@@ -2,23 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
+    <title>登录注册</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="/static/css/main.css" rel="stylesheet">
+    <!--<link href="/static/css/main.css" rel="stylesheet">-->
 
-    <div class="first_styles" style="margin:0 auto;width: 700px">
-    <a><h2>登录</h2></a>
-     <form method="post" action="{% url 'vote:login' %}" >
-            {{ error }}
-            <br>
-            name:<input type="text" name="name"><br><br>
-            pwd:<input type="password" name="pwd"><br><br>
-            <input type="submit" value="登录">
-     </form>
-        <br><br><a href="{% url 'vote:register' %}">注册</a>
+    <div>
+    {% comment %}
+        <a><h2>登录</h2></a>
+         <form method="post" action="{% url 'vote:login' %}" >
+
+                {{ error }}
+                <br>
+                name:<input type="text" name="name"><br><br>
+                pwd:<input type="password" name="pwd"><br><br>
+                <input type="submit" value="登录">
+         </form>
+    {% endcomment %}
 
     </div>
+    <br><br><br><br><br>
+    <div >
+
+
+  <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">login</a>
+            </li>
+            <li role="presentation"><a href="#register" aria-controls="register" role="tab"
+                                       data-toggle="tab">register</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="login">
+                <h2>登录</h2>
+                {{ error }}
+                <form class="form-horizontal" action="{% url 'vote:login' %}" method="post">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label" >用户名：</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="username" placeholder="用户名" name="username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">密码：</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="pwd">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-info">登录</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+
+            <div role="tabpanel" class="tab-pane " id="register">
+                <h2>注册</h2>
+                {{ errors }}
+                <form class="form-horizontal" action="{% url 'vote:register' %}" method="post">
+                    <div class="form-group">
+                        <label for="username_1" class="col-sm-2 control-label">用户名：</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="username_1" placeholder="用户名" name="username_1">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password_1" class="col-sm-2 control-label">密码：</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="pwd_1" class="form-control" id="password_1" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password_2" class="col-sm-2 control-label">请重复密码：</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="pwd_2" class="form-control" id="password_2" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-info">注册</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
 </body>
 </html>
