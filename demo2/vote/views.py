@@ -42,9 +42,27 @@ def register(request):
             return redirect(reverse('vote:login'))
 
 
+def newpwd(request):
+    if request.method=='GET':
+        return render(request, 'vote/newpwd.html')
+    if request.method=='POST':
+        username=request.POST.get('username1')
+        name=User.objects.filter(username=username)
+        if name:
+            pwd=request.POST.get('pwd1')
+            pwd1=request.POST.get('pwd2')
+            if pwd == pwd1:
+                name.set_password(pwd)
+        return render(request,'vote/newpwd.html',{"str":"更改成功"})
+
+
+
 def login(request):
     if request.method == 'GET':
-        return render(request,'vote/login.html')
+        from .forms import loginForm
+        lf = loginForm()
+
+        return render(request,'vote/login.html',{'lf':lf})
     else:
     #     username=request.POST.get('name')
     #     print(username)

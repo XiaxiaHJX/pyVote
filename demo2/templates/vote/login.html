@@ -1,15 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>登录注册</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+{% extends 'vote/base.html' %}
+
+{% block title %}
+登录
+{% endblock %}
+
+{% block link %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
      <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 
-</head>
+{% endblock %}
+
+
+{% block body %}
+
 <body>
     <!--<link href="/static/css/main.css" rel="stylesheet">-->
 
@@ -45,6 +51,7 @@
                 <h2>登录</h2>
                 {{ error }}
                 <form class="form-horizontal" action="{% url 'vote:login' %}" method="post">
+                {% csrf_token %}
                     <div class="form-group">
                         <label for="username" class="col-sm-2 control-label" >用户名：</label>
                         <div class="col-sm-10">
@@ -66,6 +73,7 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-info">登录</button>
+                            <a href="{% url 'vote:newpwd' %}">忘记密码</a>
                         </div>
                     </div>
                 </form>
@@ -77,6 +85,7 @@
                 <h2>注册</h2>
                 {{ errors }}
                 <form class="form-horizontal" action="{% url 'vote:register' %}" method="post">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label for="username_1" class="col-sm-2 control-label">用户名：</label>
                         <div class="col-sm-10">
@@ -107,8 +116,10 @@
         </div>
 
     </div>
-
-
-
+    <br><br><br><br><br>
+    <form action="#" method="post"></form>
+        {{ lf }}
+    <input type="submit">提交
 </body>
-</html>
+
+{% endblock %}

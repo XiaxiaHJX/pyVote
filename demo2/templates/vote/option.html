@@ -15,6 +15,7 @@
 
         {% for option_1 in option1.voteoption_1_set.all %}
         <form method="post" action="#">
+            {% csrf_token %}
             {% if forloop.counter == 1 %}
                 <input checked type="radio"  name="oid" value="{{ option_1.id}}"  >{{ forloop.counter }}. {{ option_1.optionname }}
             {% else %}

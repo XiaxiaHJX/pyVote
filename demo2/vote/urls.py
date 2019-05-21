@@ -5,12 +5,13 @@ from . import views
 app_name='vote'
 
 urlpatterns=[
-    url('^register/$',views.register,name='register'),
-    url('^login/$',views.login,name='login'),
-    url('^logout/$',views.logout,name='logout'),
-    url('^index/$',views.index,name='index'),
-    url('^option/(\d+)/$',views.option,name='option'),
-    url('^result/(\d+)/$',views.result,name='result'),
+    url(r'^register/$',views.register,name='register'),
+    url(r'^newpwd/$',views.newpwd,name='newpwd'),
+    url(r'^login/$',views.login,name='login'),
+    url(r'^logout/$',views.logout,name='logout'),
+    url(r'^index/$',views.index,name='index'),
+    url(r'^option/(\d+)/$',views.option,name='option'),
+    url(r'^result/(\d+)/$',views.result,name='result'),
 
 ]
 

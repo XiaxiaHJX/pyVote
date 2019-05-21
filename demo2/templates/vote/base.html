@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+
+        {% block title %}
+            父模板
+        {% endblock %}
+
+    </title>
+
+    {% block link %}
+
+    {% endblock %}
+
+
 </head>
 <body>
+
+    {% block body %}
+
+    {% endblock %}
 
 </body>
 </html>
