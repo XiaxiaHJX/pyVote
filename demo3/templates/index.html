@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load extend_fun %}
+
+
+{% block left %}
+{% if page %}
+    {% for article in page.object_list %}
+    <article class="post post-{{ article.id }}">
+        <header class="entry-header">
+            <h1 class="entry-title">
+                <a href="{% url 'blog:detail' article.id %}">{{ article.title }}</a>
+            </h1>
+            <div class="entry-meta">
+                <span class="post-category"><a href="#">{{ article.categroy.title }}</a></span>
+                <span class="post-date"><a href="#"><time class="entry-date"
+                                                          datetime="2012-11-09T23:15:57+00:00">{{ article.create_time }}</time></a></span>
+                <span class="post-author"><a href="#">{{ article.auther.username }}</a></span>
+                <span class="comments-link"><a href="#">{{ article.comment_set.count }} 评论</a></span>
+                <span class="views-count"><a href="#">{{ article.views }} 阅读</a></span>
+            </div>
+        </header>
+        <div class="entry-content clearfix">
+            <p>
+                {{ article.body|truncatechars:50|safe }}...
+            </p>
+            <div class="read-more cl-effect-14">
+                <a href="#" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+            </div>
+        </div>
+    </article>
+
+    {% empty %}
+        <li>没有文章对象</li>
+    {% endfor %}
+
+{% endif %}
+<div class="pagination">
+    <ul>
+        {% if page.has_previous %}
+            <li><a href="/?page={{ page.previous_page_number }}">上一页</a></li>
+        {% endif %}
+
+        {% for num in page.paginator.page_range %}
+            <li><a href="/?page={{ num }}"> {{ num }}</a></li>
+        {% endfor %}
+
+        {% if page.has_next %}
+            <li><a href="/?page={{ page.next_page_number }}">下一页</a> </li>
+        {% endif %}
+    </ul>
+</div>
+
+
+{% endblock %}
+
