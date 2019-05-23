@@ -8,6 +8,7 @@ class Comment(models.Model):
     url=models.URLField(blank=True,null=True)
     content=models.CharField(max_length=500)
     article=models.ForeignKey(Article,on_delete=models.CASCADE)
+    create_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.username

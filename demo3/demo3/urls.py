@@ -23,4 +23,5 @@ urlpatterns = [
     url('comments/',include('comments.urls',namespace='comments')),
     url('', include('blog.urls', namespace='blog')),
 
+
 ]

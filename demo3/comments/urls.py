@@ -3,6 +3,7 @@ from . import views
 
 
 app_name='comments'
-urlpatterns=[
 
+urlpatterns=[
+        url('^comment/(\d+)$',views.comment,name='comment')
 ]
