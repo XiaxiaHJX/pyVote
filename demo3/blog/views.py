@@ -1,9 +1,11 @@
 from django.shortcuts import render,get_object_or_404,reverse,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.core.paginator import Paginator
-from .models import Article,Category,Tag
+from .models import Article,Category,Tag,Ads as AdsModel
 from django.views.generic import View
 from .forms import ContactForm
+from django.conf import settings
+from django.core.mail import send_mail,send_mass_mail
 import markdown
 
 from django.core.paginator import Paginator
@@ -83,11 +85,36 @@ def tag(request,id):
     return render(request,'index.html',{'page':page})
 
 class Contacts(View):
+
     def get(self,request):
+
         cf = ContactForm()
+
+
         return render(request,'contact.html',locals())
     def post(self,request):
+        try:
+            send_mail('测试邮件。。。', '可以发送邮件', settings.DEFAULT_FROM_EMAIL, ["1327870569@qq.com"])
+        except Exception as e:
+            print(e)
+
         cf = ContactForm(request.POST)
         cf.save()
         cf = ContactForm()
+
         return render(request,'contact.html',{'info':'成功','cf':cf})
+
+# def contacts(request):
+#
+#     return render(request, 'contact.html')
+
+class Ads(View):
+    def get(self,request):
+        return render(request,"addads.html")
+
+    def post(self,request):
+        img = request.FILES["img"]
+        desc = request.POST.get("desc")
+        ad = AdsModel(img = img, desc= desc)
+        ad.save()
+        return redirect(reverse('blog:index'))
