@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'comments',
-    'tinymce'
+    'tinymce',
+    'haysta ck'
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,11 @@ DEFAULT_FROM_EMAIL = 'zzy0371 <18137128152@163.com>'
 
 
 MEDIA_ROOT= os.path.join(BASE_DIR,'static/media')
+
+
+HAYSTACK_CONNECTIONS = {
+'default': {
+'ENGINE': 'blog.whoosh_cn_backend.WhooshEngine',
+'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+}
+}
