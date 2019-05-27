@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果页面</title>
+</head>
+<body>
+    {{ query }}
+
+    {% if query %}
+        {% if page %}
+            {% for i in page.object_list %}
+                <li>{{ i.object.title }}</li>
+            
+            {% empty %}
+                <li>没有对象</li>
+                
+            {% endfor %}
+
+        {% else %}
+        
+        {% endif %}
+
+    {% else %}
+    
+    {% endif %}
+
+</body>
+</html>
